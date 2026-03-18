@@ -34,6 +34,7 @@
 html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    overflow-x: hidden; /* impede margem branca à direita */
 }
 
 body {
@@ -964,7 +965,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 
     .hero__container {
         padding-top: 40px;
-        padding-bottom: 60px;
+        padding-bottom: 100px;
     }
 
     .hero__content { max-width: 100%; }
