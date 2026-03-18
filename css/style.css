@@ -617,11 +617,12 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 
 .parceria__photo {
     width: 100%;
-    max-width: 380px;
-    height: auto;
+    height: 100%;
+    min-height: 460px;
     border-radius: 12px;
     display: block;
     object-fit: cover;
+    object-position: center top;
 }
 
 /* =============================================
@@ -640,12 +641,10 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 
 .servicos__image {
-    width: auto;
+    width: 100%;
     height: auto;
-    max-height: 600px;
-    max-width: 100%;
     display: block;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .servicos__grid {
