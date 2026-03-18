@@ -635,18 +635,18 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 
 .servicos__image-wrapper {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
     margin-bottom: 64px;
-    overflow: hidden;
 }
 
 .servicos__image {
-    width: 100%;
+    width: auto;
     height: auto;
+    max-height: 600px;
+    max-width: 100%;
     display: block;
+    object-fit: contain;
 }
 
 .servicos__grid {
