@@ -5,12 +5,14 @@
     --white:       #FFFFFF;
     --black:       #000000;
     --wine:        #64011e;
+    --wine-dark:   #3a000f;
+    --wine-alt:    #55011a;
     --wine-hover:  #7d0126;
-    --wine-alpha:  rgba(100, 1, 30, 0.08);
-    --gray-bg:     #f7f7f7;
-    --gray-border: #e2e2e2;
-    --gray-text:   #555555;
-    --gray-light:  #888888;
+    --wine-alpha:  rgba(255, 255, 255, 0.12);
+    --gray-bg:     #55011a;
+    --gray-border: rgba(255, 255, 255, 0.15);
+    --gray-text:   rgba(255, 255, 255, 0.75);
+    --gray-light:  rgba(255, 255, 255, 0.5);
 
     --serif: 'Playfair Display', Georgia, serif;
     --sans:  'Montserrat', system-ui, sans-serif;
@@ -18,10 +20,10 @@
     --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     --dur:  0.3s;
 
-    --shadow-md: 0 6px 24px rgba(100, 1, 30, 0.15);
-    --shadow-lg: 0 14px 44px rgba(100, 1, 30, 0.22);
+    --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 14px 44px rgba(0, 0, 0, 0.45);
 
-    --nav-h: 68px;
+    --nav-h: 104px;
     --radius: 8px;
 }
 
@@ -34,15 +36,15 @@
 html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
-    overflow-x: hidden; /* impede margem branca à direita */
+    overflow-x: hidden;
 }
 
 body {
     font-family: var(--sans);
     font-size: 16px;
     line-height: 1.7;
-    color: var(--black);
-    background: var(--white);
+    color: var(--white);
+    background: var(--wine);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
@@ -65,7 +67,6 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     padding: 0 24px;
 }
 
-/* Full-bleed helper – use on elements inside .container to stretch to 100vw */
 .full-bleed {
     width: 100vw;
     position: relative;
@@ -82,7 +83,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     font-weight: 700;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--wine);
+    color: var(--white);
     margin-bottom: 14px;
 }
 
@@ -91,7 +92,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     font-size: clamp(1.75rem, 5vw, 2.8rem);
     font-weight: 700;
     line-height: 1.18;
-    color: var(--black);
+    color: var(--white);
     margin-bottom: 16px;
 }
 
@@ -145,31 +146,31 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .btn:hover .btn__arrow { transform: translateX(4px); }
 
 .btn--primary {
-    background: var(--wine);
-    color: var(--white);
-    border-color: var(--wine);
+    background: var(--white);
+    color: var(--wine);
+    border-color: var(--white);
 }
 .btn--primary:hover {
-    background: var(--wine-hover);
-    border-color: var(--wine-hover);
+    background: rgba(255, 255, 255, 0.88);
+    border-color: rgba(255, 255, 255, 0.88);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
 
 .btn--outline {
     background: transparent;
-    color: var(--wine);
-    border-color: var(--wine);
+    color: var(--white);
+    border-color: var(--white);
 }
 .btn--outline:hover {
-    background: var(--wine);
+    background: rgba(255, 255, 255, 0.15);
     color: var(--white);
     transform: translateY(-2px);
 }
 
 .btn--ghost {
     background: transparent;
-    color: var(--wine);
+    color: var(--white);
     border-color: var(--gray-border);
     padding: 11px 22px;
     font-size: 0.82rem;
@@ -177,21 +178,21 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 .btn--ghost:hover {
     background: var(--wine-alpha);
-    border-color: var(--wine);
+    border-color: rgba(255, 255, 255, 0.4);
     transform: translateY(-2px);
 }
 
 .btn--whatsapp {
-    background: var(--wine);
-    color: var(--white);
-    border-color: var(--wine);
+    background: var(--white);
+    color: var(--wine);
+    border-color: var(--white);
     justify-content: center;
     font-size: 1rem;
     padding: 18px 40px;
 }
 .btn--whatsapp:hover {
-    background: var(--wine-hover);
-    border-color: var(--wine-hover);
+    background: rgba(255, 255, 255, 0.88);
+    border-color: rgba(255, 255, 255, 0.88);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
@@ -214,7 +215,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     inset: 0 0 auto 0;
     z-index: 900;
     height: var(--nav-h);
-    background: var(--white);
+    background: var(--wine);
     border-bottom: 1px solid transparent;
     transition: border-color var(--dur) var(--ease),
                 box-shadow var(--dur) var(--ease);
@@ -222,7 +223,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 
 .header.is-scrolled {
     border-bottom-color: var(--gray-border);
-    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.3);
 }
 
 .nav {
@@ -245,10 +246,10 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 
 .nav__logo-img {
-    height: 100%;
+    height: 90px;
     width: auto;
     display: block;
-    mix-blend-mode: multiply; /* makes white bg invisible on white header */
+    object-fit: contain;
 }
 
 /* Menu */
@@ -261,7 +262,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .nav__link {
     font-size: 0.85rem;
     font-weight: 500;
-    color: var(--black);
+    color: var(--white);
     position: relative;
     padding-bottom: 2px;
     transition: color var(--dur);
@@ -273,25 +274,25 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     left: 0;
     width: 0;
     height: 1.5px;
-    background: var(--wine);
+    background: var(--white);
     transition: width var(--dur) var(--ease);
 }
 .nav__link:hover,
-.nav__link.is-active { color: var(--wine); }
+.nav__link.is-active { color: rgba(255, 255, 255, 0.7); }
 .nav__link:hover::after,
 .nav__link.is-active::after { width: 100%; }
 
 .nav__link--cta {
-    background: var(--wine);
-    color: var(--white);
+    background: var(--white);
+    color: var(--wine);
     padding: 9px 20px;
     border-radius: var(--radius);
     font-size: 0.82rem;
 }
 .nav__link--cta::after { display: none; }
 .nav__link--cta:hover {
-    background: var(--wine-hover);
-    color: var(--white);
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--wine);
 }
 
 /* Hamburger */
@@ -306,12 +307,12 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     border-radius: 4px;
     transition: background var(--dur);
 }
-.nav__hamburger:hover { background: var(--gray-bg); }
+.nav__hamburger:hover { background: rgba(255, 255, 255, 0.1); }
 .nav__hamburger span {
     display: block;
     width: 22px;
     height: 2px;
-    background: var(--black);
+    background: var(--white);
     border-radius: 2px;
     transition: transform var(--dur) var(--ease), opacity var(--dur);
 }
@@ -324,14 +325,13 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
    ============================================= */
 .hero {
     position: relative;
-    margin-top: var(--nav-h);          /* push down so header doesn't cover the face */
+    margin-top: var(--nav-h);
     min-height: calc(100svh - var(--nav-h));
     display: flex;
     align-items: center;
     overflow: hidden;
 }
 
-/* Background image fills the section (below the header) */
 .hero__bg {
     position: absolute;
     inset: 0;
@@ -422,7 +422,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
    SOBRE – image bleeds to left edge
    ============================================= */
 .sobre {
-    background: var(--gray-bg);
+    background: var(--wine-alt);
     margin-top: 64px;
 }
 
@@ -461,7 +461,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .sobre__certs {
     margin: 32px 0;
     padding: 24px 28px;
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: var(--radius);
     border: 1px solid var(--gray-border);
 }
@@ -484,13 +484,13 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     gap: 11px;
     font-size: 0.92rem;
     font-weight: 500;
-    color: var(--black);
+    color: var(--white);
 }
 
 .check-icon {
     width: 17px;
     height: 17px;
-    color: var(--wine);
+    color: var(--white);
     flex-shrink: 0;
 }
 
@@ -498,7 +498,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
    SERVIÇOS
    ============================================= */
 .servicos {
-    background: var(--white);
+    background: var(--wine);
     padding: 100px 0;
 }
 
@@ -526,7 +526,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 
 /* Card */
 .servico-card {
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.07);
     border: 1px solid var(--gray-border);
     border-radius: 10px;
     padding: 32px 24px 26px;
@@ -537,7 +537,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
                 transform var(--dur);
 }
 .servico-card:hover {
-    border-color: var(--wine);
+    border-color: rgba(255, 255, 255, 0.4);
     box-shadow: var(--shadow-md);
     transform: translateY(-5px);
 }
@@ -545,7 +545,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .servico-card__icon {
     width: 44px;
     height: 44px;
-    color: var(--wine);
+    color: var(--white);
     margin-bottom: 16px;
 }
 .servico-card__icon svg { width: 100%; height: 100%; }
@@ -554,7 +554,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     font-family: var(--serif);
     font-size: 1.15rem;
     font-weight: 700;
-    color: var(--black);
+    color: var(--white);
     margin-bottom: 10px;
     line-height: 1.3;
 }
@@ -583,7 +583,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: var(--wine);
+    background: var(--white);
     margin-top: 8px;
     flex-shrink: 0;
 }
@@ -594,7 +594,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--wine);
+    color: var(--white);
     background: var(--wine-alpha);
     padding: 5px 11px;
     border-radius: 100px;
@@ -605,7 +605,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
    ALUNOS
    ============================================= */
 .alunos {
-    background: var(--gray-bg);
+    background: var(--wine-alt);
     padding: 100px 0;
 }
 
@@ -626,7 +626,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .diferencial svg {
     width: 17px;
     height: 17px;
-    color: var(--wine);
+    color: var(--white);
     flex-shrink: 0;
 }
 
@@ -655,7 +655,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 
 .depoimento {
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.07);
     border: 1px solid var(--gray-border);
     border-radius: 10px;
     padding: 28px 24px;
@@ -664,7 +664,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
                 transform var(--dur);
 }
 .depoimento:hover {
-    border-color: var(--wine);
+    border-color: rgba(255, 255, 255, 0.4);
     box-shadow: var(--shadow-md);
     transform: translateY(-4px);
 }
@@ -672,7 +672,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .depoimento__avatar {
     width: 46px;
     height: 46px;
-    background: var(--wine);
+    background: rgba(255, 255, 255, 0.18);
     color: var(--white);
     border-radius: 50%;
     display: flex;
@@ -690,7 +690,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: var(--wine);
+    color: var(--white);
     background: var(--wine-alpha);
     padding: 4px 10px;
     border-radius: 100px;
@@ -711,7 +711,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     display: block;
     font-size: 0.92rem;
     font-weight: 600;
-    color: var(--black);
+    color: var(--white);
 }
 .depoimento__author span {
     font-size: 0.8rem;
@@ -722,7 +722,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
    CONTATO – image bleeds to left edge
    ============================================= */
 .contato {
-    background: var(--white);
+    background: var(--wine);
     border-top: 1px solid var(--gray-border);
 }
 
@@ -762,7 +762,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
    FOOTER
    ============================================= */
 .footer {
-    background: var(--black);
+    background: var(--wine-dark);
     color: var(--white);
 }
 
@@ -783,10 +783,11 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 
 .footer__logo-img {
-    height: 44px;
+    height: 40px;
     width: auto;
+    max-width: 180px;
     display: block;
-    filter: brightness(0) invert(1);
+    object-fit: contain;
 }
 
 .footer__tagline {
@@ -797,7 +798,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .footer__cref {
     font-size: 0.75rem;
     font-weight: 600;
-    color: var(--wine);
+    color: rgba(255,255,255,0.7);
     letter-spacing: 0.06em;
     margin-top: 2px;
 }
@@ -840,7 +841,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .footer__social-links a:hover { color: var(--white); }
 
 .footer__bottom {
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.3);
 }
 .footer__bottom-inner {
     display: flex;
@@ -859,7 +860,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
    ACCESSIBILITY
    ============================================= */
 :focus-visible {
-    outline: 2px solid var(--wine);
+    outline: 2px solid var(--white);
     outline-offset: 3px;
     border-radius: 3px;
 }
@@ -898,23 +899,25 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
    ============================================= */
 @media (max-width: 768px) {
 
-    :root { --nav-h: 60px; }
+    :root { --nav-h: 72px; }
 
     /* ---- NAV ---- */
     .nav { padding: 0 16px; }
+
+    .nav__logo-img { height: 56px; }
 
     .nav__hamburger { display: flex; }
 
     .nav__menu {
         position: fixed;
         inset: var(--nav-h) 0 auto 0;
-        background: var(--white);
+        background: var(--wine);
         flex-direction: column;
         align-items: stretch;
         gap: 0;
         padding: 10px 0 20px;
         border-bottom: 1px solid var(--gray-border);
-        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
         transform: translateY(-6px);
         opacity: 0;
         visibility: hidden;
@@ -945,11 +948,11 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     /* ---- HERO ---- */
     .hero {
         min-height: calc(100svh - var(--nav-h));
-        align-items: flex-end;      /* content sits at bottom on mobile */
+        align-items: flex-end;
     }
 
     .hero__bg-img {
-        object-position: 65% top;  /* show face on portrait phones */
+        object-position: 65% top;
     }
 
     .hero__overlay {
