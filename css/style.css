@@ -4,12 +4,10 @@
 :root {
     --white:       #FFFFFF;
     --black:       #000000;
+    --bg:          #3A000F;
+    --bg-dark:     #2a0009;
     --wine:        #64011e;
-    --wine-dark:   #3a000f;
-    --wine-alt:    #55011a;
-    --wine-hover:  #7d0126;
     --wine-alpha:  rgba(255, 255, 255, 0.12);
-    --gray-bg:     #55011a;
     --gray-border: rgba(255, 255, 255, 0.15);
     --gray-text:   rgba(255, 255, 255, 0.75);
     --gray-light:  rgba(255, 255, 255, 0.5);
@@ -44,7 +42,7 @@ body {
     font-size: 16px;
     line-height: 1.7;
     color: var(--white);
-    background: var(--wine);
+    background: var(--bg);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
@@ -189,6 +187,9 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     justify-content: center;
     font-size: 1rem;
     padding: 18px 40px;
+    word-break: break-word;
+    white-space: normal;
+    text-align: center;
 }
 .btn--whatsapp:hover {
     background: rgba(255, 255, 255, 0.88);
@@ -215,7 +216,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     inset: 0 0 auto 0;
     z-index: 900;
     height: var(--nav-h);
-    background: var(--wine);
+    background: var(--bg);
     border-bottom: 1px solid transparent;
     transition: border-color var(--dur) var(--ease),
                 box-shadow var(--dur) var(--ease);
@@ -321,7 +322,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .nav__hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* =============================================
-   HERO – full-screen background, starts below header
+   HERO
    ============================================= */
 .hero {
     position: relative;
@@ -356,7 +357,6 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     );
 }
 
-/* Content */
 .hero__container {
     position: relative;
     z-index: 1;
@@ -400,7 +400,6 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     max-width: 480px;
 }
 
-/* Scroll indicator */
 .hero__scroll {
     position: absolute;
     bottom: 28px;
@@ -419,10 +418,10 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 
 /* =============================================
-   SOBRE – image bleeds to left edge
+   SOBRE
    ============================================= */
 .sobre {
-    background: var(--wine-alt);
+    background: var(--bg);
     margin-top: 64px;
 }
 
@@ -432,6 +431,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     display: grid;
     grid-template-columns: 46% 1fr;
     align-items: start;
+    overflow: hidden;
 }
 
 .sobre__image-col {
@@ -449,6 +449,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
 }
 
 .sobre__text p {
@@ -495,14 +496,97 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 
 /* =============================================
+   PARCERIA NUTRICIONISTA
+   ============================================= */
+.parceria {
+    background: var(--bg);
+    padding: 100px 0;
+    border-top: 1px solid var(--gray-border);
+}
+
+.parceria__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 80px;
+    align-items: center;
+}
+
+.parceria__content {
+    display: flex;
+    flex-direction: column;
+}
+
+.parceria__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--gray-border);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+    width: fit-content;
+}
+
+.parceria__title {
+    font-family: var(--serif);
+    font-size: clamp(1.75rem, 4vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.parceria__text {
+    font-size: 1rem;
+    color: var(--gray-text);
+    line-height: 1.85;
+    margin-bottom: 16px;
+}
+
+.parceria__name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-top: 8px;
+}
+
+.parceria__role {
+    font-size: 0.85rem;
+    color: var(--gray-light);
+}
+
+.parceria__image-col {
+    display: flex;
+    justify-content: center;
+}
+
+.parceria__photo {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    object-fit: cover;
+}
+
+/* =============================================
    SERVIÇOS
    ============================================= */
 .servicos {
-    background: var(--wine);
+    background: var(--bg);
     padding: 100px 0;
+    border-top: 1px solid var(--gray-border);
 }
 
-/* Service image – centered, natural proportions */
 .servicos__image-wrapper {
     display: flex;
     justify-content: center;
@@ -524,7 +608,6 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     gap: 22px;
 }
 
-/* Card */
 .servico-card {
     background: rgba(255, 255, 255, 0.07);
     border: 1px solid var(--gray-border);
@@ -532,9 +615,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     padding: 32px 24px 26px;
     display: flex;
     flex-direction: column;
-    transition: border-color var(--dur),
-                box-shadow var(--dur),
-                transform var(--dur);
+    transition: border-color var(--dur), box-shadow var(--dur), transform var(--dur);
 }
 .servico-card:hover {
     border-color: rgba(255, 255, 255, 0.4);
@@ -605,8 +686,9 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
    ALUNOS
    ============================================= */
 .alunos {
-    background: var(--wine-alt);
+    background: var(--bg);
     padding: 100px 0;
+    border-top: 1px solid var(--gray-border);
 }
 
 .diferenciais {
@@ -630,13 +712,11 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     flex-shrink: 0;
 }
 
-/* Alunos gallery – 3 photos, natural proportions, centered */
 .alunos__gallery {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     gap: 16px;
-    margin-bottom: 56px;
 }
 
 .alunos__gallery-img {
@@ -648,81 +728,150 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     object-fit: contain;
 }
 
-.depoimentos-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+/* =============================================
+   PLANOS E VALORES
+   ============================================= */
+.planos {
+    background: var(--bg);
+    padding: 100px 0;
+    border-top: 1px solid var(--gray-border);
 }
 
-.depoimento {
+.planos__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.plano-card {
     background: rgba(255, 255, 255, 0.07);
     border: 1px solid var(--gray-border);
-    border-radius: 10px;
-    padding: 28px 24px;
-    transition: border-color var(--dur),
-                box-shadow var(--dur),
-                transform var(--dur);
+    border-radius: 12px;
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color var(--dur), box-shadow var(--dur), transform var(--dur);
 }
-.depoimento:hover {
+.plano-card:hover {
     border-color: rgba(255, 255, 255, 0.4);
     box-shadow: var(--shadow-md);
-    transform: translateY(-4px);
+    transform: translateY(-5px);
 }
 
-.depoimento__avatar {
-    width: 46px;
-    height: 46px;
-    background: rgba(255, 255, 255, 0.18);
-    color: var(--white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    margin-bottom: 12px;
+.plano-card--destaque {
+    border-color: rgba(255,255,255,0.35);
+    background: rgba(255, 255, 255, 0.11);
 }
 
-.depoimento__metric {
-    display: inline-block;
+.plano-card__label {
     font-size: 0.68rem;
     font-weight: 700;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--white);
-    background: var(--wine-alpha);
-    padding: 4px 10px;
-    border-radius: 100px;
-    margin-bottom: 12px;
+    color: var(--gray-light);
+    margin-bottom: 10px;
 }
 
-.depoimento__quote {
+.plano-card__title {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+}
+
+.plano-card__desc {
     font-size: 0.9rem;
     color: var(--gray-text);
-    line-height: 1.75;
-    font-style: italic;
-    margin-bottom: 16px;
-    border: none;
-    padding: 0;
+    line-height: 1.7;
+    margin-bottom: 28px;
 }
 
-.depoimento__author strong {
-    display: block;
-    font-size: 0.92rem;
+.plano-card__prices {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+.plano-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.07);
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-border);
+}
+
+.plano-price__freq {
+    font-size: 0.82rem;
     font-weight: 600;
+    color: var(--gray-text);
+}
+
+.plano-price__value {
+    font-size: 1.25rem;
+    font-weight: 700;
     color: var(--white);
 }
-.depoimento__author span {
+
+.plano-price__unit {
+    font-size: 0.78rem;
+    color: var(--gray-light);
+    margin-left: 4px;
+}
+
+.plano-card__obs {
     font-size: 0.8rem;
     color: var(--gray-light);
+    line-height: 1.6;
+    margin-bottom: 28px;
+    flex: 1;
+}
+
+.plano-card__obs strong {
+    color: rgba(255,255,255,0.85);
 }
 
 /* =============================================
-   CONTATO – image bleeds to left edge
+   CONHEÇA MAIS – VÍDEO
+   ============================================= */
+.conheca {
+    background: var(--bg);
+    padding: 100px 0;
+    border-top: 1px solid var(--gray-border);
+}
+
+.conheca__video-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+}
+
+.conheca__video-frame {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--gray-border);
+    box-shadow: var(--shadow-lg);
+}
+
+.conheca__video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =============================================
+   CONTATO
    ============================================= */
 .contato {
-    background: var(--wine);
+    background: var(--bg);
     border-top: 1px solid var(--gray-border);
 }
 
@@ -732,6 +881,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     display: grid;
     grid-template-columns: 46% 1fr;
     align-items: start;
+    overflow: hidden;
 }
 
 .contato__image-col {
@@ -749,6 +899,8 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
+    min-width: 0;
 }
 
 .contato__desc {
@@ -762,7 +914,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
    FOOTER
    ============================================= */
 .footer {
-    background: var(--wine-dark);
+    background: var(--bg-dark);
     color: var(--white);
 }
 
@@ -872,7 +1024,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 
 /* =============================================
-   AOS – pointer-events passthrough only
+   AOS
    ============================================= */
 [data-aos] { pointer-events: none; }
 [data-aos].aos-animate { pointer-events: auto; }
@@ -884,18 +1036,18 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     .servicos__grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    .depoimentos-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
     .sobre__content,
     .contato__content {
         padding: 60px 36px;
+    }
+    .parceria__container {
+        grid-template-columns: 1fr 320px;
+        gap: 48px;
     }
 }
 
 /* =============================================
    RESPONSIVE – MOBILE (≤ 768px)
-   Mobile-first refinements
    ============================================= */
 @media (max-width: 768px) {
 
@@ -911,7 +1063,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     .nav__menu {
         position: fixed;
         inset: var(--nav-h) 0 auto 0;
-        background: var(--wine);
+        background: var(--bg);
         flex-direction: column;
         align-items: stretch;
         gap: 0;
@@ -950,11 +1102,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
         min-height: calc(100svh - var(--nav-h));
         align-items: flex-end;
     }
-
-    .hero__bg-img {
-        object-position: 65% top;
-    }
-
+    .hero__bg-img { object-position: 65% top; }
     .hero__overlay {
         background: linear-gradient(
             to top,
@@ -963,75 +1111,55 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
             rgba(0,0,0,0.15) 100%
         );
     }
-
-    .hero__container {
-        padding-top: 40px;
-        padding-bottom: 100px;
-    }
-
+    .hero__container { padding-top: 40px; padding-bottom: 100px; }
     .hero__content { max-width: 100%; }
-
     .hero__title { font-size: clamp(2rem, 9vw, 2.8rem); }
-
-    .hero__subtitle {
-        font-size: 0.95rem;
-        max-width: 100%;
-    }
+    .hero__subtitle { font-size: 0.95rem; max-width: 100%; }
 
     /* ---- SOBRE ---- */
-    .sobre__container {
+    .sobre { margin-top: 40px; }
+    .sobre__container { grid-template-columns: 1fr; }
+    .sobre__image { height: auto; }
+    .sobre__content { padding: 48px 20px; }
+
+    /* ---- PARCERIA ---- */
+    .parceria { padding: 72px 0; }
+    .parceria__container {
         grid-template-columns: 1fr;
+        gap: 40px;
     }
-
-    .sobre__image {
-        height: auto;
-    }
-
-    .sobre__content {
-        padding: 48px 20px;
-    }
+    .parceria__image-col { order: -1; }
+    .parceria__photo { max-width: 280px; margin: 0 auto; }
 
     /* ---- SERVIÇOS ---- */
     .servicos { padding: 72px 0; }
-
-    .servicos__grid {
-        grid-template-columns: 1fr;
-    }
+    .servicos__grid { grid-template-columns: 1fr; }
 
     /* ---- ALUNOS ---- */
     .alunos { padding: 72px 0; }
-
-    .alunos__gallery {
-        flex-wrap: wrap;
-    }
-
+    .alunos__gallery { flex-wrap: wrap; }
     .alunos__gallery-img {
         max-width: calc(50% - 8px);
         flex: 0 0 calc(50% - 8px);
     }
-
     .diferenciais {
         flex-direction: column;
         align-items: flex-start;
         gap: 14px;
     }
 
-    .depoimentos-grid {
-        grid-template-columns: 1fr;
-    }
+    /* ---- PLANOS ---- */
+    .planos { padding: 72px 0; }
+    .planos__grid { grid-template-columns: 1fr; }
+
+    /* ---- CONHEÇA ---- */
+    .conheca { padding: 72px 0; }
+    .conheca__video-frame { max-width: 100%; }
 
     /* ---- CONTATO ---- */
-    .contato__container {
-        grid-template-columns: 1fr;
-    }
-
-    .contato__image {
-        height: auto;
-    }
-
-    .contato__content {
-        padding: 48px 20px;
-    }
+    .contato__container { grid-template-columns: 1fr; }
+    .contato__image { height: auto; }
+    .contato__content { padding: 48px 20px; }
 
     /* ---- FOOTER ---- */
     .footer__top {
@@ -1048,7 +1176,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 
     /* ---- BUTTONS ---- */
     .btn { padding: 14px 28px; font-size: 0.9rem; }
-    .btn--whatsapp { font-size: 0.95rem; padding: 16px 28px; }
+    .btn--whatsapp { font-size: 0.95rem; padding: 16px 24px; }
 }
 
 /* =============================================
@@ -1056,20 +1184,14 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
    ============================================= */
 @media (max-width: 420px) {
     .container { padding: 0 16px; }
-
     .hero__title { font-size: 2rem; }
     .section-title { font-size: 1.65rem; }
-
     .sobre__image { height: auto; }
     .contato__image { height: auto; }
-
-    .alunos__gallery-img {
-        max-width: 100%;
-        flex: 0 0 100%;
-    }
-
+    .alunos__gallery-img { max-width: 100%; flex: 0 0 100%; }
     .servicos { padding: 56px 0; }
     .alunos { padding: 56px 0; }
-
+    .planos { padding: 56px 0; }
+    .conheca { padding: 56px 0; }
     .section-header { margin-bottom: 36px; }
 }
