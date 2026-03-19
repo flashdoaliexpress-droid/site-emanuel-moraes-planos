@@ -932,24 +932,11 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     transform: translateY(-5px);
 }
 
-.combo-inner {
-    display: flex;
-    gap: 48px;
-    align-items: flex-start;
-}
-
-.combo-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
 .combo-prices {
-    flex: 1.1;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    align-self: center;
+    margin-bottom: 28px;
 }
 
 .combo-price-group {
@@ -1319,7 +1306,6 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     .planos__grid { grid-template-columns: 1fr; }
     .plano-card { padding: 28px 20px; }
     .plano-card--combo { grid-column: 1; }
-    .combo-inner { flex-direction: column; gap: 24px; }
     .combo-prices { grid-template-columns: 1fr; gap: 14px; }
     .combo-price-old { display: block; margin-bottom: 2px; margin-right: 0; }
     .plano-price { flex-wrap: wrap; gap: 4px; align-items: center; }
