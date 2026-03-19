@@ -610,6 +610,20 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 .parceria__insta:hover { color: var(--white); }
 
+.parceria__vermais {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.45);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 4px;
+    padding: 5px 13px;
+    transition: color var(--dur), border-color var(--dur);
+}
+.parceria__vermais:hover { color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.4); }
+
 .parceria__image-col {
     display: flex;
     justify-content: center;
@@ -765,6 +779,12 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     gap: 16px;
 }
 
+.alunos__gallery--transf {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 720px;
+    margin: 0 auto;
+}
+
 .alunos__gallery-img {
     width: 100%;
     height: auto;
@@ -857,6 +877,20 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     color: var(--gray-text);
 }
 
+.badge-popular {
+    display: inline-block;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #000;
+    background: var(--white);
+    padding: 2px 7px;
+    border-radius: 20px;
+    margin-left: 7px;
+    vertical-align: middle;
+}
+
 .plano-price__value {
     font-size: 1.25rem;
     font-weight: 700;
@@ -875,6 +909,95 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     line-height: 1.6;
     margin-bottom: 28px;
     flex: 1;
+}
+
+/* COMBO ELITE */
+.plano-card--combo {
+    grid-column: 1 / -1;
+    border-color: var(--wine);
+    background: rgba(100, 1, 30, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+.plano-card--combo::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--wine);
+}
+.plano-card--combo:hover {
+    border-color: var(--wine);
+    box-shadow: 0 8px 32px rgba(100, 1, 30, 0.25);
+    transform: translateY(-5px);
+}
+
+.combo-inner {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+}
+
+.combo-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.combo-prices {
+    flex: 1.1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    align-self: center;
+}
+
+.combo-price-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.combo-group-title {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.combo-tag {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--wine);
+    padding: 2px 8px;
+    border-radius: 20px;
+    vertical-align: middle;
+}
+
+.combo-off-badge {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--wine);
+    padding: 2px 7px;
+    border-radius: 20px;
+}
+
+.combo-price-old {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--gray-light);
+    text-decoration: line-through;
+    margin-right: 5px;
 }
 
 .plano-card__obs strong {
@@ -1194,6 +1317,12 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     /* ---- PLANOS ---- */
     .planos { padding: 72px 0; }
     .planos__grid { grid-template-columns: 1fr; }
+    .plano-card { padding: 28px 20px; }
+    .plano-card--combo { grid-column: 1; }
+    .combo-inner { flex-direction: column; gap: 24px; }
+    .combo-prices { grid-template-columns: 1fr; gap: 14px; }
+    .combo-price-old { display: block; margin-bottom: 2px; margin-right: 0; }
+    .plano-price { flex-wrap: wrap; gap: 4px; align-items: center; }
 
     /* ---- CONHEÇA ---- */
     .conheca { padding: 72px 0; }
