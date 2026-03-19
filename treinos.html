@@ -264,9 +264,134 @@
             .treino-block { padding: 0 16px; margin-bottom: 56px; }
             .treino-block__letra { width: 44px; height: 44px; font-size: 1.3rem; }
         }
+
+        /* ── Lead Gate Modal ── */
+        .lead-gate {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(6px);
+        }
+        .lead-gate.hidden {
+            display: none;
+        }
+        .lead-gate__card {
+            background: #0f0f0f;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+            padding: 48px 40px;
+            max-width: 460px;
+            width: 100%;
+            text-align: center;
+        }
+        .lead-gate__eyebrow {
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--wine, #64011e);
+            margin-bottom: 16px;
+        }
+        .lead-gate__title {
+            font-family: var(--serif);
+            font-size: clamp(1.4rem, 4vw, 1.9rem);
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+        .lead-gate__desc {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+        .lead-gate__form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .lead-gate__input {
+            width: 100%;
+            background: rgba(255,255,255,0.06);
+            border: 1.5px solid rgba(255,255,255,0.14);
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 0.9rem;
+            font-family: var(--sans, 'Montserrat', sans-serif);
+            color: var(--white);
+            outline: none;
+            transition: border-color 0.25s;
+            box-sizing: border-box;
+        }
+        .lead-gate__input::placeholder { color: rgba(255,255,255,0.3); }
+        .lead-gate__input:focus { border-color: rgba(255,255,255,0.4); }
+        .lead-gate__divider {
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin: 2px 0;
+        }
+        .lead-gate__submit {
+            margin-top: 6px;
+            background: var(--wine, #64011e);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 24px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            font-family: var(--sans, 'Montserrat', sans-serif);
+            cursor: pointer;
+            transition: opacity 0.25s, transform 0.2s;
+            letter-spacing: 0.04em;
+        }
+        .lead-gate__submit:hover { opacity: 0.88; }
+        .lead-gate__submit:active { transform: scale(0.98); }
+        .lead-gate__submit:disabled { opacity: 0.5; cursor: not-allowed; }
+        .lead-gate__error {
+            font-size: 0.8rem;
+            color: #ff6b6b;
+            display: none;
+        }
+        .lead-gate__privacy {
+            margin-top: 16px;
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.25);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 480px) {
+            .lead-gate__card { padding: 36px 24px; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Lead Gate Modal -->
+    <div class="lead-gate" id="leadGate" role="dialog" aria-modal="true" aria-labelledby="leadGateTitle">
+        <div class="lead-gate__card">
+            <span class="lead-gate__eyebrow">Acesso Gratuito</span>
+            <h2 class="lead-gate__title" id="leadGateTitle">5 Treinos Completos, de Graça</h2>
+            <p class="lead-gate__desc">Deixa seu nome e um contato para eu liberar os treinos — prometo que não vou encher sua caixa de spam.</p>
+            <form class="lead-gate__form" id="leadForm" novalidate>
+                <input class="lead-gate__input" type="text" name="nome" id="leadNome" placeholder="Seu nome" autocomplete="given-name" required>
+                <input class="lead-gate__input" type="email" name="email" id="leadEmail" placeholder="Seu e-mail" autocomplete="email">
+                <span class="lead-gate__divider">ou</span>
+                <input class="lead-gate__input" type="tel" name="telefone" id="leadTel" placeholder="Seu WhatsApp (com DDD)" autocomplete="tel">
+                <span class="lead-gate__error" id="leadError">Preencha o nome e pelo menos um contato (e-mail ou telefone).</span>
+                <button class="lead-gate__submit" type="submit" id="leadSubmit">Quero ver os treinos →</button>
+            </form>
+            <p class="lead-gate__privacy">Seus dados ficam só comigo. Nada de spam, promessa de personal trainer.</p>
+        </div>
+    </div>
 
     <!-- Cabeçalho da página -->
     <header class="treinos-header">
@@ -547,6 +672,74 @@
         </div>
 
     </main>
+
+    <script>
+    (function () {
+        // ─── Configuração ───────────────────────────────────────────────────
+        // Crie uma conta gratuita em https://formspree.io, crie um form e
+        // substitua o valor abaixo pelo endpoint gerado (ex: https://formspree.io/f/xabc1234)
+        var FORMSPREE_ENDPOINT = 'https://formspree.io/f/xvzwdjbd';
+        // ────────────────────────────────────────────────────────────────────
+
+        var gate      = document.getElementById('leadGate');
+        var form      = document.getElementById('leadForm');
+        var nome      = document.getElementById('leadNome');
+        var email     = document.getElementById('leadEmail');
+        var tel       = document.getElementById('leadTel');
+        var error     = document.getElementById('leadError');
+        var submitBtn = document.getElementById('leadSubmit');
+
+        // Se já preencheu nesta sessão, libera direto
+        if (sessionStorage.getItem('lead_unlocked')) {
+            gate.classList.add('hidden');
+            return;
+        }
+
+        gate.classList.remove('hidden');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            error.style.display = 'none';
+
+            var nomeVal  = nome.value.trim();
+            var emailVal = email.value.trim();
+            var telVal   = tel.value.trim();
+
+            if (!nomeVal || (!emailVal && !telVal)) {
+                error.style.display = 'block';
+                return;
+            }
+
+            submitBtn.disabled    = true;
+            submitBtn.textContent = 'Enviando…';
+
+            var payload = { nome: nomeVal, email: emailVal, telefone: telVal };
+
+            fetch(FORMSPREE_ENDPOINT, {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body:    JSON.stringify(payload)
+            })
+            .then(function (res) {
+                if (res.ok) {
+                    sessionStorage.setItem('lead_unlocked', '1');
+                    gate.classList.add('hidden');
+                } else {
+                    throw new Error('Erro ao enviar');
+                }
+            })
+            .catch(function () {
+                // Se o endpoint ainda não está configurado, libera o conteúdo mesmo assim
+                // (remova as próximas 2 linhas quando o Formspree estiver ativo)
+                sessionStorage.setItem('lead_unlocked', '1');
+                gate.classList.add('hidden');
+
+                submitBtn.disabled    = false;
+                submitBtn.textContent = 'Quero ver os treinos →';
+            });
+        });
+    })();
+    </script>
 
 </body>
 </html>
