@@ -247,7 +247,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 
 .nav__logo-img {
-    height: 90px;
+    height: 110px;
     width: auto;
     display: block;
     object-fit: contain;
@@ -616,13 +616,13 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.06em;
-    color: rgba(255,255,255,0.45);
-    border: 1px solid rgba(255,255,255,0.18);
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.5);
     border-radius: 4px;
     padding: 5px 13px;
     transition: color var(--dur), border-color var(--dur);
 }
-.parceria__vermais:hover { color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.4); }
+.parceria__vermais:hover { color: var(--white); border-color: var(--white); }
 
 .parceria__image-col {
     display: flex;
@@ -1304,7 +1304,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     /* ---- NAV ---- */
     .nav { padding: 0 16px; }
 
-    .nav__logo-img { height: 56px; }
+    .nav__logo-img { height: 80px; }
 
     .nav__hamburger { display: flex; }
 
